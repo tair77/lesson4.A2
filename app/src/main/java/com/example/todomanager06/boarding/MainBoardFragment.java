@@ -11,9 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.todomanager06.R;
+import com.example.todomanager06.adapter.HomeAdapter;
+import com.example.todomanager06.boarding.interfeis.ViewPager;
+import com.example.todomanager06.client.ViewPagerClient;
 import com.example.todomanager06.databinding.FragmentBoardBinding;
 import com.example.todomanager06.databinding.FragmentMainBoardBinding;
 import com.example.todomanager06.model.ViewPagerModel;
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
 
@@ -33,10 +37,13 @@ public class MainBoardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        list.add(new ViewPagerModel("1", "1", R.drawable.todo_illustration));
-        list.add(new ViewPagerModel("2", "2", R.drawable.todo_illustration));
-        list.add(new ViewPagerModel("3", "3", R.drawable.todo_illustration));
+        getData();
+    }
+
+    private void getData() {
+        list = ViewPagerClient.getPagerlist();
         adapter = new ViewPagerAdapter(list);
         binding.viewpager.setAdapter(adapter);
+        binding.dotsIndicator.setViewPager2(binding.viewpager);
     }
 }

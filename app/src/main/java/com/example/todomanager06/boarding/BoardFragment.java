@@ -9,14 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.todomanager06.R;
+import com.example.todomanager06.client.ViewPagerClient;
+import com.example.todomanager06.databinding.FragmentBoardBinding;
+import com.example.todomanager06.model.ViewPagerModel;
+
+import java.util.ArrayList;
 
 
 public class BoardFragment extends Fragment {
+    private FragmentBoardBinding binding;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board, container, false);
+        binding = FragmentBoardBinding.inflate(getLayoutInflater(),container,false);
+        return binding.getRoot();
+
     }
 }

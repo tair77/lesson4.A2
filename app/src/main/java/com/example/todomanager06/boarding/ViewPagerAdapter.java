@@ -46,6 +46,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
             binding.titleTv.setText(model.getTitle());
             binding.descriptionTv.setText(model.getDescription());
             binding.imageView.setImageResource(model.getImage());
-        }
-    }
+            binding.skipBtn.setText(model.getSkip());
+
+        }}
 }
