@@ -16,7 +16,7 @@ public class ViewPagerClient {
         pagerlist.add(new ViewPagerModel("Collaboration" +
                 "with students", "You can create a common study.schedule," +
                 "group tasks, manage them and communicate " +
-                "with other members.", R.drawable.asesmen,"Scip"));
+                "with other members.", R.drawable.asesmen,"Skip"));
         pagerlist.add(new ViewPagerModel("How to keep up" +
                 "with everything?", "You can track your productivity, see your results" +
                 "and progress. Also, this is a great opportunity" +

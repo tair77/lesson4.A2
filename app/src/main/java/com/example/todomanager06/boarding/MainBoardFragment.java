@@ -10,14 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.todomanager06.R;
-import com.example.todomanager06.adapter.HomeAdapter;
-import com.example.todomanager06.boarding.interfeis.ViewPager;
 import com.example.todomanager06.client.ViewPagerClient;
-import com.example.todomanager06.databinding.FragmentBoardBinding;
 import com.example.todomanager06.databinding.FragmentMainBoardBinding;
 import com.example.todomanager06.model.ViewPagerModel;
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.ArrayList;
 
