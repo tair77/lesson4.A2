@@ -1,8 +1,9 @@
 package com.example.todomanager06.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 
 import com.example.todomanager06.R;
 import com.example.todomanager06.databinding.FragmentCreateTaskBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.Calendar;
@@ -27,6 +30,8 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     private int startYear;
     private int startMonth;
     private int startDay;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,17 +88,20 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
     }
 
     private void showRepeatDialog() {
-        LayoutInflater inflater = LayoutInflater.from(requireContext());
-        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.repeat_dialog, null);
-        Dialog alertDialog = new Dialog(requireContext());
-        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        Dialog alertDialog = new Dialog(requireContext(), R.style.CustomBottomSheetDialogTheme);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.repeat_dialog, requireView().findViewById(R.id.bottom_shit_con));
+
         alertDialog.setContentView(view);
         alertDialog.show();
+
+
         RadioButton never = alertDialog.findViewById(R.id.never_radioBtn);
         RadioButton everyDay = alertDialog.findViewById(R.id.Every_day_btn);
         RadioButton everyWeer = alertDialog.findViewById(R.id.Every_week_btn);
         RadioButton everyMonth = alertDialog.findViewById(R.id.Every_month_btn);
         RadioButton everyYear = alertDialog.findViewById(R.id.Every_year_btn);
+        RadioButton custom = alertDialog.findViewById(R.id.Custom_btn);
         never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,6 +134,13 @@ public class CreateTaskFragment extends BottomSheetDialogFragment implements Dat
             @Override
             public void onClick(View view) {
                 binding.chooseRepeatTv.setText("Every year");
+                alertDialog.dismiss();
+            }
+        });
+        custom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.chooseRepeatTv.setText("Custom");
                 alertDialog.dismiss();
             }
         });
